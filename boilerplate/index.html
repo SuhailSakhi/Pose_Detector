@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MediaPipe Handpose Logger</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer type="module" src="./script.js"></script>
+</head>
+<body>
+<section>
+    <h1>Handpose Detection & Logging</h1>
+
+    <button id="webcamButton">Start Webcam</button>
+    <button id="logButton">Log Data</button>
+
+    <select id="gestureLabel">
+        <option value="up">⬆️ Eén vinger omhoog</option>
+        <option value="down">⬇️ Eén vinger omlaag</option>
+        <option value="like">🤍 Japans hartje</option>
+    </select>
+    <button id="savePose">➕ Save Pose</button>
+    <button id="downloadData">💾 Download JSON</button>
+
+    <div class="videoView">
+        <div style="position: relative;">
+            <video id="webcam" style="position: absolute;" muted autoplay playsinline></video>
+            <canvas id="output_canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
+            <div id="myimage">hoi</div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
