@@ -111,7 +111,7 @@ downloadButton.addEventListener("click", () => {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "handpose-data.json";
+    a.download = "hand_gestures.json";
     a.click();
 
     URL.revokeObjectURL(url);
