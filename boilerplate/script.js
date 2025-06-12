@@ -78,6 +78,46 @@ async function predictWebcam() {
     }
 }
 
+
+const dataset = [];
+
+const saveButton = document.getElementById("savePose");
+saveButton.addEventListener("click", () => {
+    const label = document.getElementById("gestureLabel").value;
+    const hand = results?.landmarks?.[0];
+
+    if (hand) {
+        const flatLandmarks = hand.flatMap(p => [p.x, p.y, p.z]);
+        const pose = {
+            label,
+            landmarks: flatLandmarks
+        };
+        dataset.push(pose);
+        console.log("Pose saved:", pose);
+    } else {
+        console.warn("No hand detected – nothing saved.");
+    }
+});
+
+const downloadButton = document.getElementById("downloadData");
+downloadButton.addEventListener("click", () => {
+    if (dataset.length === 0) {
+        alert("No data to download!");
+        return;
+    }
+
+    const blob = new Blob([JSON.stringify(dataset, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "handpose-data.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+});
+
+
 /********************************************************************
 // LOG HAND COORDINATES IN THE CONSOLE
 ********************************************************************/
