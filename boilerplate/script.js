@@ -84,7 +84,8 @@ async function predictWebcam() {
 function logAllHands(){
     for (let hand of results.landmarks) {
         // console.log(hand)
-        console.log(hand[4])
+        const flatLandmarks = hand.flatMap(p => [p.x, p.y, p.z]);
+        console.log(flatLandmarks);
     }
 }
 
